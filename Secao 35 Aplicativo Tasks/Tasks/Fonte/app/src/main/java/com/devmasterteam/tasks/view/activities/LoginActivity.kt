@@ -17,7 +17,6 @@ class LoginActivity : AppCompatActivity() {
         var password: String = ""
     }
 
-
     private lateinit var viewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
 
@@ -26,9 +25,6 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         binding = ActivityLoginBinding.inflate(layoutInflater)
-
-
-
         setContentView(binding.root)
 
         binding.buttonLogin.setOnClickListener { handleLogin() }

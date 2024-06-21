@@ -11,4 +11,8 @@
     <color name="grey_700">#FFFFFF</color>
     <color name="grey_500">#c1c1c1</color>
     <color name="grey_200">#535353</color>
+
+    <color name="green_200">#A5D6A7</color>
+    <color name="green_500">#4CAF50</color>
+    <color name="green_700">#27612A</color>
 </resources>

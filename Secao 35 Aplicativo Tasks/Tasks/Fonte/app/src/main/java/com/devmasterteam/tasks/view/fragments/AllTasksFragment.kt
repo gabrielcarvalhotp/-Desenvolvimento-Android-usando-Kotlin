@@ -1,10 +1,12 @@
 package com.devmasterteam.tasks.view.fragments
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import java.text.DateFormatSymbols
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -15,6 +17,9 @@ import com.devmasterteam.tasks.listeners.TaskListener
 import com.devmasterteam.tasks.view.activities.TaskFormActivity
 import com.devmasterteam.tasks.view.adapter.TaskAdapter
 import com.devmasterteam.tasks.viewmodel.TaskListViewModel
+import com.whiteelephant.monthpicker.MonthPickerDialog
+import java.util.Calendar
+import java.util.Locale
 
 class AllTasksFragment : Fragment() {
 
@@ -53,6 +58,7 @@ class AllTasksFragment : Fragment() {
 
         })
 
+        binding.buttonDate.setOnClickListener { showMonthYearPicker() }
         observe()
         return binding.root
     }
@@ -70,6 +76,28 @@ class AllTasksFragment : Fragment() {
     private fun observe() {
         viewModel.taskList.observe(viewLifecycleOwner) {
             adapter.updateTasks(it)
+        }
+    }
+
+    private fun showMonthYearPicker() {
+        val today = Calendar.getInstance()
+        val builder = MonthPickerDialog.Builder(activity, { selectedMonth, selectedYear ->
+                binding.buttonDate.text = getMonthName(selectedMonth) + "/" + selectedYear
+            }, today.get(Calendar.YEAR), today.get(Calendar.MONTH))
+        builder.setActivatedMonth(Calendar.JULY)
+            .setMinYear(1990)
+            .setActivatedYear(today.get(Calendar.YEAR))
+            .setMaxYear(2030)
+            .setTitle("Selecione mês e ano")
+            .build().show()
+    }
+
+    private fun getMonthName(monthNumber: Int): String {
+        val months = DateFormatSymbols().months
+        return if (monthNumber in 1..12) {
+            months[monthNumber - 1]
+        } else {
+            "Invalid month number"
         }
     }
 }
