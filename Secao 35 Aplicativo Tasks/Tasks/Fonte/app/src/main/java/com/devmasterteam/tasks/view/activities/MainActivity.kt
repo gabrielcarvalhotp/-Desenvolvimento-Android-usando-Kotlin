@@ -11,6 +11,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.ui.NavigationUI
@@ -38,12 +39,15 @@ class MainActivity : AppCompatActivity() {
         }
         loadUserName()
         setupNavigation()
+        setTheme()
     }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+
 
     private fun setupNavigation() {
         val drawerLayout: DrawerLayout = binding.drawerLayout
@@ -72,6 +76,15 @@ class MainActivity : AppCompatActivity() {
         val userName = viewModel.getUserName()
         val header = binding.navView.getHeaderView(0)
         header.findViewById<TextView>(R.id.text_name).text = userName
+    }
+
+    private fun setTheme() {
+        val empresa = "ARTVAC"
+        if (empresa == "ARTVAC") {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
     }
 
 }
