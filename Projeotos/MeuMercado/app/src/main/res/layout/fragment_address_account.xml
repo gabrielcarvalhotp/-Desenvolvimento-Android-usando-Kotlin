@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.login.AddressAccountFragment">
+
+    <TextView
+        android:id="@+id/text_access"
+        style="@style/ComponentsLoginPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_account"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@id/text_pass_two"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/text_pass_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Passo 2 de 2"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@id/text_cep"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_access" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_cep"
+        style="@style/ComponentsLoginPage"
+        app:layout_constraintBottom_toTopOf="@+id/text_address"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_pass_two"
+        app:layout_constraintWidth_max="512dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_cep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/cep" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_address"
+        style="@style/ComponentsLoginPage"
+        app:layout_constraintBottom_toTopOf="@id/text_district"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_cep"
+        app:layout_constraintWidth_max="512dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/address" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_district"
+        style="@style/ComponentsLoginPage"
+        app:layout_constraintBottom_toTopOf="@id/text_city"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_address"
+        app:layout_constraintWidth_max="512dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_district"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/district" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_city"
+        style="@style/ComponentsLoginPage"
+        android:layout_marginStart="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_create_account"
+        app:layout_constraintEnd_toStartOf="@id/text_state"
+        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintStart_toStartOf="@+id/text_district"
+        app:layout_constraintTop_toBottomOf="@id/text_district"
+        app:layout_constraintWidth_max="512dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/city" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_state"
+        style="@style/ComponentsLoginPage"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/text_district"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@id/text_city"
+        app:layout_constraintTop_toTopOf="@id/text_city"
+        app:layout_constraintWidth_max="512dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="UF" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button_create_account"
+        style="@style/ComponentsLoginPage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/access"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/text_create_account"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_city"
+        app:layout_constraintWidth_max="512dp" />
+
+    <TextView
+        android:id="@+id/text_have_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="@string/have_account"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

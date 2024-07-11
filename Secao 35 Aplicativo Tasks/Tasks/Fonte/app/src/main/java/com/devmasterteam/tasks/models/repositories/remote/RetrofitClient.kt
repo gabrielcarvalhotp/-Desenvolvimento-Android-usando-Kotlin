@@ -11,6 +11,7 @@ class RetrofitClient private constructor() {
         private lateinit var instance: Retrofit
         private var token = ""
         private var personKey = ""
+
         private fun getInstace(): Retrofit {
             val okHttpClient = OkHttpClient().newBuilder()
             okHttpClient.addInterceptor() { chain ->
