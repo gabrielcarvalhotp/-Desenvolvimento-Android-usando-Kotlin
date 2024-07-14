@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/createAccountFragment"
-        android:name="com.gabrielcarvalhotp.meumercado.ui.login.CreateAccountFragment"
+        android:name="com.gabrielcarvalhotp.meumercado.ui.createaccount.CreateAccountFragment"
         android:label="fragment_create_account"
         tools:layout="@layout/fragment_create_account" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/addressAccountFragment"
-        android:name="com.gabrielcarvalhotp.meumercado.ui.login.AddressAccountFragment"
+        android:name="com.gabrielcarvalhotp.meumercado.ui.createaccount.AddressAccountFragment"
         android:label="fragment_address_account"
         tools:layout="@layout/fragment_address_account" >
         <action

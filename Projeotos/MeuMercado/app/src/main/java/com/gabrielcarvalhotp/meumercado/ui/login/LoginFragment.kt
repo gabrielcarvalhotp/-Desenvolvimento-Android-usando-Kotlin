@@ -61,6 +61,11 @@ class LoginFragment : Fragment(), View.OnClickListener {
     }
 
     private fun observe() {
-
+        viewModel.user.observe(viewLifecycleOwner) {
+            if (it != null) {
+                startActivity(Intent(context, MainActivity::class.java))
+                requireActivity().finish()
+            }
+        }
     }
 }

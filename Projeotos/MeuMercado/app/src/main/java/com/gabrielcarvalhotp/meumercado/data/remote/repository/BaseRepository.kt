@@ -12,17 +12,22 @@ import retrofit2.Callback
 import retrofit2.Response
 
 open class BaseRepository(val context: Context) {
-    private fun failureResponse(error: StandardException): String {
-        return Gson().fromJson(error.message, String::class.java)
+    private fun failureResponse(errorBody: String): String {
+        try {
+            val standardException = Gson().fromJson(errorBody, StandardException::class.java);
+            return standardException.message
+        } catch (e: Exception) {
+            return "Erro, entre em contato com o suporte"
+        }
     }
 
     fun <T> executeCall(call: Call<T>, listener: CallbackListener<T>) {
         call.enqueue(object : Callback<T> {
             override fun onResponse(call: Call<T>, response: Response<T>) {
-                if (response.code() == 200) {
+                if (response.code() in 200..208) {
                     response.body()!!.let { listener.onResponse(it) }
                 } else {
-                    val message = failureResponse(response.body()!! as StandardException)
+                    val message = failureResponse(response.errorBody()!!.string())
                     listener.onFailure(message)
                 }
             }

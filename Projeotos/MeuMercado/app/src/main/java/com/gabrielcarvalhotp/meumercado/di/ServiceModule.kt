@@ -1,5 +1,6 @@
 package com.gabrielcarvalhotp.meumercado.di
 
+import com.gabrielcarvalhotp.meumercado.data.remote.service.PostalCodeService
 import com.gabrielcarvalhotp.meumercado.data.remote.service.UserService
 import dagger.Module
 import dagger.Provides
@@ -21,14 +22,23 @@ object ServiceModule {
         return provideService(UserService::class.java)
     }
 
+    @Singleton
+    @Provides
+    fun providePostalCodeService(): PostalCodeService {
+        return Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://viacep.com.br/ws/")
+            .build()
+            .create(PostalCodeService::class.java)
+    }
+
     private fun <T> provideService(service: Class<T>): T {
         val okHttpClient = OkHttpClient.Builder()
             .build()
             .newBuilder()
             .addInterceptor { chain ->
                 val credentials = Credentials.basic("user", "password")
-                val request = chain.request()
-                request.newBuilder()
+                val request = chain.request().newBuilder()
                     .addHeader("Authorization", credentials)
                     .build()
                 chain.proceed(request)
@@ -37,7 +47,7 @@ object ServiceModule {
         return Retrofit.Builder()
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://127.0.0.1:8080/")
+            .baseUrl("http://192.168.0.253:8080/")
             .build()
             .create(service)
     }

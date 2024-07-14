@@ -27,11 +27,12 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
         observe()
+        viewModel.checkUserLogged()
     }
 
     private fun observe() {
-        viewModel.user.observe(this) {
-            if (it == null) {
+        viewModel.userLogged.observe(this) {
+            if (it) {
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             }

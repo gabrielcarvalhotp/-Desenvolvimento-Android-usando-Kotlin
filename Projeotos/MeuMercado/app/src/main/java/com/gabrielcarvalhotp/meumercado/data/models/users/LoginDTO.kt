@@ -1,8 +1,8 @@
-package com.gabrielcarvalhotp.meumercado.data.models
+package com.gabrielcarvalhotp.meumercado.data.models.users
 
 import com.google.gson.annotations.SerializedName
 
-class LoginModel(email: String, password: String) {
+class LoginDTO(email: String, password: String) {
 
     @SerializedName("email")
     var email: String? = null
